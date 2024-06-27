@@ -15,7 +15,11 @@ except ImportError:
 
 from mmengine.model import BaseModel
 from mmengine.structures import InstanceData
-from transformers import RobertaModel, RobertaTokenizerFast
+try:
+    from transformers import RobertaModel, RobertaTokenizerFast
+except ImportError:
+    # Please follow getting_started.md to install MinkowskiEngine.
+    transformers = None
 
 from embodiedscan.models.layers import SparseFeatureFusionTransformerDecoder
 from embodiedscan.models.layers.fusion_layers.point_fusion import (
